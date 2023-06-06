@@ -1,4 +1,27 @@
-  
+<?php 
+include_once ('database/dbConnection.php');
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $newsletter = mysqli_real_escape_string($db_con, $_POST["newsletter"]);
+$sql = "INSERT INTO newsletter (NewsletterEmail) VALUES ('$newsletter')";
+if ($db_con->query($sql) === TRUE) {
+    // echo '<span class="success-badge">Form submitted successfully!</span>';
+
+} else {
+    echo "Error: " . $sql . "<br>" . $db_con->error;
+}
+}
+
+?>  
+<style>
+    .success-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: green;
+        color: white;
+        border-radius: 5px;
+    }
+</style>
+
 <div class="container-fluid bg-dark text-secondary  pt-5">
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
@@ -33,9 +56,9 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
                         <p>Stay informed and up-to-date with our latest news, offers, and exclusive promotions by subscribing to our newsletter. Join our community today!</p>
-                        <form action="">
+                        <form method="POST">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Your Email Address">
+                                <input type="email" class="form-control" name="newsletter" placeholder="Your Email Address">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary">Sign Up</button>
                                 </div>
