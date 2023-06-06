@@ -57,7 +57,7 @@ include_once ('database/dbConnection.php');
 
                         if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {?>
-                        <a href="" class="nav-item nav-link"><?php echo $row['CategoryName']?></a>
+                        <a href="product_category.php?CategoryID=<?php echo $row['CategoryID']?>" class="nav-item nav-link"><?php echo $row['CategoryName']?></a>
                         <?php
                             }
                         }?>
@@ -67,8 +67,7 @@ include_once ('database/dbConnection.php');
             <div class="col-lg-9">
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
-                        <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
-                        <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
+                        <span class="text-uppercase text-dark px-2"><img src="img/logo/logo-1.png" alt="amaqazi logo" width="50"></span>
                     </a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
