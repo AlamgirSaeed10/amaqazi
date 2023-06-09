@@ -46,11 +46,14 @@ if ($db_con->query($sql) === TRUE) {
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
-                        <h5 class="text-secondary text-uppercase mb-4">Legal</h5>
+                        <h5 class="text-secondary text-uppercase mb-4">Business Hours</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Privacy Policy</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Return Policy</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shipping Refund</a>
+                            <h6><p class="text-secondary mb-2">Office & Customer Support</p></h6>
+                            <p class="text-secondary mb-2">Mon - Fri, 9AM - 5PM (EST)</p>
+                            <p class="text-secondary mb-2">Saturday Sunday Closed</p>
+                            <p class="text-secondary mb-2"><u>Customer Support</u></p>
+                            <a href="mailto:support@amaqazi.com">support@amaqazi.com </a>
+                           
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
@@ -68,6 +71,25 @@ if ($db_con->query($sql) === TRUE) {
                 </div>
             </div>
         </div>
-      
+      <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-secondary">
+                   © AmaQazi | 
+                   <a href = "privacy-policy.php" class="text-secondary">Privacy Policy </a> | 
+                   <a href = "refund-policy.php" class="text-secondary">Refund Policy </a> | 
+                   <a href = "shipping-policy.php" class="text-secondary">Shipping Policy </a> | 
+                   <a href = "terms-service.php" class="text-secondary">Terms of Service</a> 
+                </p>
+            </div>
+
+            <div class="col-md-6 px-xl-0 text-center text-right">
+                <div class="d-flex float-right">
+                            <a class="pl-3 mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="pl-3 mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="pl-3 mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="pl-3 mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+            </div>
+        </div>
     </div>
     <!-- Footer End -->
