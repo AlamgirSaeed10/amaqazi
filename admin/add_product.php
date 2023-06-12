@@ -65,7 +65,12 @@ while ($row = mysqli_fetch_assoc($result)) {
 // Close the database connection
 mysqli_close($db_con);
 ?>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
 
+</head>
 <body>
     <div class="container">
         <h1>Add Product</h1>
@@ -105,7 +110,7 @@ mysqli_close($db_con);
             </div>
             <div class="form-group">
                 <label for="image">Image:</label>
-                <input type="file" accept="image/*" class="form-control" name="image">
+                <input type="file" accept="image/*" class="form-control" name="image" required>
             </div>
             <div class="form-group">
                 <label for="size">Size:</label>

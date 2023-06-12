@@ -47,7 +47,12 @@ while ($row = mysqli_fetch_assoc($result)) {
 // Close the database connection
 mysqli_close($db_con);
 ?>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
 
+</head>
 <body>
     <div class="container">
         <h1>Edit Product</h1>
