@@ -173,12 +173,20 @@ include_once ('database/dbConnection.php');
             <?php
             }
     
-}?>
+            }?>
            
         </div>
     </div>
     <!-- Categories End -->
 
+    <?php
+    // Check if there is a success message
+    if (isset($_SESSION['success_message'])) {
+        echo '<p>' . $_SESSION['success_message'] . '</p>';
+        // Clear the success message from the session
+        unset($_SESSION['success_message']);
+    }
+    ?>
 
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3">
@@ -205,14 +213,22 @@ include_once ('database/dbConnection.php');
                     break;
                 }   
     ?>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="card-img-product" src="img/<?php echo $image?>" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                        <form id="add-cart<?php echo $ID?>" method="post" action="addToCart.php">
+                            <input type="hidden" name="product_id" value="<?php echo $ID;?>">
+                            <input type="hidden" name="product_name" value="<?php echo $Name;?>">
+                            <input type="hidden" name="product_image" value="<?php echo $image;?>">
+                            <input type="hidden" name="price" value="<?php echo $SalePrice;?>">
+                        </form>
+                        
+                        <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="card-img-product" src="img/<?php echo $image?>" alt="">
+                                    <div class="product-action">
+                                        
+                                    <a class="btn btn-outline-dark btn-square" onclick="add_cart(<?php echo $ID; ?>)"><i class="far fa-heart"></i></a>
+
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
                             <a class="btn btn-outline-dark btn-square" href="detail.php?ID=<?php echo $ID?>"><i class="fa fa-search"></i></a>
                         </div>
                     </div>
@@ -232,12 +248,11 @@ include_once ('database/dbConnection.php');
                     </div>
                 </div>
             </div>
-    <!-- Products End -->
-<?php 
-            } } 
-?>
+        <?php 
+        } 
+    } 
+        ?>
 
-    <!-- Offer Start -->
     <div class="container-fluid pt-5 pb-3">
         <div class="row px-xl-5">
             <div class="col-md-6">
@@ -246,7 +261,7 @@ include_once ('database/dbConnection.php');
                     <div class="offer-text">
                         <h6 class="text-white text-uppercase">Save 20%</h6>
                         <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <a href="shop.php" class="btn btn-primary">Shop Now</a>
                     </div>
                 </div>
             </div>
@@ -256,15 +271,12 @@ include_once ('database/dbConnection.php');
                     <div class="offer-text">
                         <h6 class="text-white text-uppercase">Save 20%</h6>
                         <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <a href="shop.php" class="btn btn-primary">Shop Now</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Offer End -->
-
-    <!-- Vendor Start -->
     <div class="container-fluid py-5">
     <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Affiliated Brands</span></h2>
         <div class="row px-xl-5">
@@ -298,23 +310,22 @@ include_once ('database/dbConnection.php');
             </div>
         </div>
     </div>
-    <!-- Vendor End -->
-    
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-    <!-- JavaScript Libraries -->
+    <script>
+    function add_cart(formIndex) {
+        document.getElementById("add-cart" + formIndex).submit();
+    }
+</script>
+
+
+
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <?php include('footer.php');?>
 </body>
-
-<?php include('footer.php');?>

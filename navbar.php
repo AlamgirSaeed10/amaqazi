@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
 include_once ('database/dbConnection.php');
 ?>
 <!-- Topbar Start -->
@@ -80,6 +82,15 @@ include_once ('database/dbConnection.php');
                             <a href="about.php" class="nav-item nav-link <?php echo (basename($_SERVER['PHP_SELF'])) == 'about.php' ? 'active': '' ?>">About</a>
                             <a href="https://forms.gle/DgkqvTe9A98bnr3y9" target="_blank" class="nav-item nav-link <?php echo (basename($_SERVER['PHP_SELF'])) == 'comingsoon.php' ? 'active': '' ?>">Request Product</a>
                             <a href="contact.php" class="nav-item nav-link <?php echo (basename($_SERVER['PHP_SELF'])) == 'contact.php' ? 'active': '' ?>">Contact</a>
+                        </div>
+                        <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                            <a href="cart.php" class="btn px-0 ml-3">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
+    <?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : '0'; ?>
+</span>
+
+                            </a>
                         </div>
                      
                     </div>
