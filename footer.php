@@ -1,7 +1,7 @@
 <?php 
 include_once ('database/dbConnection.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $newsletter = mysqli_real_escape_string($db_con, $_POST["newsletter"]);
+    $newsletter = mysqli_real_escape_string($db_con, isset($_POST["newsletter"]));
 $sql = "INSERT INTO newsletter (NewsletterEmail) VALUES ('$newsletter')";
 if ($db_con->query($sql) === TRUE) {
     // echo '<span class="success-badge">Form submitted successfully!</span>';

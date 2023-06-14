@@ -1,17 +1,39 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
-
+}
 include_once ('database/dbConnection.php');
 ?>
 <!-- Topbar Start -->
-    <div class="container-fluid">
-    <div class="row py-1 px-xl-5" style="background-color:#c2e7ff">
-            <div class="col-lg-12 mt-2 d-none  d-lg-block" style="text-align: center; ">
-                <p>Free home delivery...!</p>
+<div class="container-fluid">
+
+<div class="row py-1 px-xl-5" style="background-color:#c2e7ff">
+            <div class="col-lg-12 text-center">
+            <div class="d-inline-flex align-items-center">
+            <p class="mt-3 "><strong>Shop Smart &amp; Save Big! Free Shipping on Special Days + Get 35% Off Your First Order. Follow Us Daily for Exclusive Specials Coupons.</strong></p>
+            </div>
+
+                <div class="d-inline-flex align-items-center d-block d-lg-none">
+                <a href="cart.php" class="btn px-0 ml-3">
+                                <i class="fas fa-shopping-cart text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
+    <?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : '0'; ?>
+</span>
+
+                            </a>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- <div class="row py-1 px-xl-5" style="background-color:#c2e7ff">
+    <div class="col-lg-12 mt-2 d-none  d-lg-block" style="text-align: center; ">
+                
             </div>
                
             </div>
-        </div>
+        </div> -->
+
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
                 <a href="" class="text-decoration-none">
@@ -19,7 +41,7 @@ include_once ('database/dbConnection.php');
                     <span class="h1 px-2 ml-n1"><img src="img/logo/logo-w1.png" alt="amaqazi logo" class="img-fluid" style="width: 30%;margin-top: 10px;"></span>
                 </a>
             </div>
-            <div class="col-lg-4 col-6 text-left">
+            <div class="col-lg-6 col-6 text-left">
                 <form action="">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for products">
@@ -31,10 +53,10 @@ include_once ('database/dbConnection.php');
                     </div>
                 </form>
             </div>
-            <div class="col-lg-4 col-6 text-right">
+            <div class="col-lg-2 col-6 text-center">
                 <p class="m-0">Customer Service</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>procurement@amaqazi.com</p>
                     <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+1 245 255 4931</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>procurement@amaqazi.com</p>
             </div>
         </div>
     </div>
@@ -52,17 +74,12 @@ include_once ('database/dbConnection.php');
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
                         <?php
-
                         $sql = "SELECT * FROM `productcategories`";
-
                         $result = $db_con->query($sql);
-
                         if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {?>
                         <a href="product_category.php?CategoryID=<?php echo $row['CategoryID']?>" class="nav-item nav-link"><?php echo $row['CategoryName']?></a>
-                        <?php
-                            }
-                        }?>
+                        <?php } } ?>
                     </div>
                 </nav>
             </div>
@@ -77,7 +94,7 @@ include_once ('database/dbConnection.php');
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link <?php echo (basename($_SERVER['PHP_SELF'])) == 'index.php' ? 'active': '' ?>">Home</a>
-                            <a href="comingsoon.php" class="nav-item nav-link <?php echo (basename($_SERVER['PHP_SELF'])) == 'comingsoon.php' ? 'active': '' ?>">Shop</a>
+                            <a href="shop.php" class="nav-item nav-link <?php echo (basename($_SERVER['PHP_SELF'])) == 'shop.php' ? 'active': '' ?>">Shop</a>
                             <a href="https://docs.google.com/spreadsheets/d/1ZWfvK4jeGb_kXHFWADiZsnotmGXQlX6SQqnlGiPYXEk/edit?usp=sharing" target="_blank" class="nav-item nav-link <?php echo (basename($_SERVER['PHP_SELF'])) == 'detail.php' ? 'active': '' ?>" >Catalog</a>
                             <a href="about.php" class="nav-item nav-link <?php echo (basename($_SERVER['PHP_SELF'])) == 'about.php' ? 'active': '' ?>">About</a>
                             <a href="https://forms.gle/DgkqvTe9A98bnr3y9" target="_blank" class="nav-item nav-link <?php echo (basename($_SERVER['PHP_SELF'])) == 'comingsoon.php' ? 'active': '' ?>">Request Product</a>

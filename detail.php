@@ -49,6 +49,7 @@ $result = mysqli_query($db_con, $sql);
         $productImage = $row['Image'];
         $salePrice = $row['SalePrice'];
         ?>
+
             <div class="col-lg-5 mb-30">
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner bg-light">
@@ -138,8 +139,14 @@ $result = mysqli_query($db_con, $sql);
                                 </button>
                             </div>
                         </div>
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-                            Cart</button>
+                        <form id="" method="post" action="addToCart.php">
+                            <input type="hidden" name="product_id" value="<?php echo $row['ID'];?>">
+                            <input type="hidden" name="product_name" value="<?php echo $productDescription;?>">
+                            <input type="hidden" name="product_image" value="<?php echo $productImage;?>">
+                            <input type="hidden" name="price" value="<?php echo $salePrice;?>">
+                            <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                        </form>
+
                     </div>
                     <div class="d-flex pt-2">
                         <strong class="text-dark mr-2">Share on:</strong>
